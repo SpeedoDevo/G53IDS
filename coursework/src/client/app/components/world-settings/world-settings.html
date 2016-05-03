@@ -1,0 +1,29 @@
+<md-card flex="">
+  <md-card-header>
+    <md-card-header-text layout="row" layout-align="space-between center">
+      <span class="md-title">WORLD SETTINGS</span>
+      <md-button class="md-icon-button md-warn" aria-label="Reset to default" ng-click="default()">
+        <md-icon md-font-icon="material-icons">restore</md-icon>
+      </md-button>
+    </md-card-header-text>
+  </md-card-header>
+  <md-card-content layout="column" layout-align="space-around" flex>
+    <div layout="column">
+      <span class="md-body-1">GRAVITATION: {{settings.gravitation}}</span>
+      <md-slider class="md-primary" flex ng-model="settings.gravitation" step="1" min="5" max="50"
+                 aria-label="gravitation">
+    </div>
+    <div layout="column">
+      <span class="md-body-1">ELEVATION: {{settings.elevation}}</span>
+      <md-slider class="md-primary" flex ng-model="settings.elevation" step="1" min="-5" max="5" aria-label="elevation">
+    </div>
+    <div layout="column">
+      <span class="md-body-1">DISTANCE: {{settings.distance}}</span>
+      <md-slider class="md-primary" flex ng-model="settings.distance" step="1" min="5" max="25" aria-label="distance">
+    </div>
+    <div layout="column">
+      <span class="md-body-1">WEIGHT: {{settings.weight}}</span>
+      <md-slider class="md-primary" flex ng-model="settings.weight" step="1" min="10" max="50" aria-label="weight">
+    </div>
+  </md-card-content>
+</md-card>

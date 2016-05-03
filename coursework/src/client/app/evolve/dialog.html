@@ -1,0 +1,173 @@
+<md-dialog aria-label="evolution settings">
+<md-toolbar class="md-accent">
+  <div class="md-toolbar-tools" layout-align="space-between center">
+    <div layout="row" layout-align="center center">
+      <md-button class="md-icon-button" aria-label="back to home" ui-sref="main" ng-click="close()">
+        <md-icon md-font-icon="material-icons">home</md-icon>
+      </md-button>
+      <h2>EVOLUTION SETTINGS</h2>
+    </div>
+
+    <div layout="row" layout-align="center center">
+      <md-button class="md-icon-button">
+        <md-icon md-font-icon="material-icons">info_outline</md-icon>
+      </md-button>
+      <md-button class="md-icon-button" ng-click="close()">
+        <md-icon md-font-set="material-icons">close</md-icon>
+      </md-button>
+    </div>
+  </div>
+</md-toolbar>
+<md-dialog-content layout="column" layout-padding class="y-scroll" flex>
+  <div class="">
+    <div layout="row">
+      <world-settings flex="{{advanced ? 15 : 50}}"></world-settings>
+      <md-card flex="{{advanced ? 85 : 50}}">
+        <md-card-header>
+          <md-card-header-text layout="row" layout-align="space-between center">
+            <span class="md-title">GA SETTINGS</span>
+            <span flex="5"></span>
+              <span layout="row" layout-align="center center">
+                <span>
+                  <md-tooltip md-direction="left">ADVANCED MODE</md-tooltip>
+                  <md-switch ng-model="advanced" aria-label="advanced" class="md-primary"></md-switch>
+                </span>
+                <md-button class="md-icon-button md-warn" aria-label="Reset to default" ng-click="defaultGA()">
+                  <md-icon md-font-icon="material-icons">restore</md-icon>
+                </md-button>
+              </span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content layout="row">
+          <div layout="column" layout-align="space-around" flex="{{advanced ? 15 : 100}}">
+            <div layout="column">
+              <span class="md-body-1">MUTATION RATE: {{ga.mutationRate}}</span>
+              <md-slider class="md-primary" flex ng-model="ga.mutationRate" step="1" min="1" max="20"
+                         aria-label="mutation rate">
+            </div>
+            <div layout="column">
+              <span class="md-body-1">PARALLEL SIMULATIONS: {{ga.simulations.h * ga.simulations.w}}</span>
+
+              <div layout="row">
+                <div flex="20" layout="column">
+                  <md-slider class="md-primary" flex ng-model="ga.simulations.h" step="1" min="1" max="3" md-vertical
+                             aria-label="simulations width" flex layout="column">
+                </div>
+                <div layout="column" flex="80">
+                  <md-slider class="md-primary" ng-model="ga.simulations.w" step="1" min="1" max="5"
+                             aria-label="simulations height"></md-slider>
+                  <div layout="row" layout-align="center center">
+                    <md-input-container flex="" class="inline-input">
+                      <label>width</label>
+                      <input type="number" step="1" ng-model="ga.simulations.w" min="1" max="5"/>
+                    </md-input-container>
+                    <span><br/>*</span>
+                    <md-input-container flex="" class="inline-input">
+                      <label>height</label>
+                      <input type="number" step="1" ng-model="ga.simulations.h" min="1" max="3"/>
+                    </md-input-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div layout="column">
+              <span class="md-body-1">POPULATION: {{ga.population}}</span>
+              <md-slider class="md-primary" flex ng-model="ga.population"
+                         step="1" min="15" max="200" aria-label="weight">
+            </div>
+            <div layout="column">
+              <span class="md-body-1">WAIT BEFORE SIMULATION: {{ga.wait/1000}}s</span>
+              <md-slider class="md-primary" flex ng-model="ga.wait" step="250" min="0" max="5000"
+                         aria-label="weight">
+            </div>
+          </div>
+          <div ng-if="advanced" flex="85" layout="row">
+            <div layout-padding flex="30">
+              <div layout="column">
+                <span class="md-body-1">REMOVE NODE OPERATOR: {{ga.operators.RemoveNodeOperator}}</span>
+                <md-slider class="md-primary" flex ng-model="ga.operators.RemoveNodeOperator" step="1" min="0" max="30"
+                           aria-label="mutation rate">
+              </div>
+              <div layout="column">
+                <span class="md-body-1">REMOVE EDGE OPERATOR: {{ga.operators.RemoveEdgeOperator}}</span>
+                <md-slider class="md-primary" flex ng-model="ga.operators.RemoveEdgeOperator" step="1" min="0" max="30"
+                           aria-label="mutation rate">
+              </div>
+              <div layout="column">
+                <span class="md-body-1">ADD NODE OPERATOR: {{ga.operators.AddNodeOperator}}</span>
+                <md-slider class="md-primary" flex ng-model="ga.operators.AddNodeOperator" step="1" min="0" max="30"
+                           aria-label="mutation rate">
+              </div>
+              <div layout="column">
+                <span class="md-body-1">CONNECT NODES OPERATOR: {{ga.operators.ConnectNodesOperator}}</span>
+                <md-slider class="md-primary" flex ng-model="ga.operators.ConnectNodesOperator" step="1" min="0"
+                           max="30"
+                           aria-label="mutation rate">
+              </div>
+              <div layout="column">
+                <span class="md-body-1">MIRROR NODE OPERATOR: {{ga.operators.MirrorNodeOperator}}</span>
+                <md-slider class="md-primary" flex ng-model="ga.operators.MirrorNodeOperator" step="1" min="0" max="30"
+                           aria-label="mutation rate">
+              </div>
+              <div layout="column">
+                <span class="md-body-1">NUDGE NODE OPERATOR: {{ga.operators.NudgeNodeOperator}}</span>
+                <md-slider class="md-primary" flex ng-model="ga.operators.NudgeNodeOperator" step="1" min="0" max="30"
+                           aria-label="mutation rate">
+              </div>
+              <div layout="column">
+                <span class="md-body-1">MAKE TRIANGLE OPERATOR: {{ga.operators.MakeTriangleOperator}}</span>
+                <md-slider class="md-primary" flex ng-model="ga.operators.MakeTriangleOperator" step="1" min="0"
+                           max="30"
+                           aria-label="mutation rate">
+              </div>
+            </div>
+            <div flex="70" layout="column" layout-margin>
+              <div ui-ace="{mode: 'javascript', onLoad: editorLoaded, workerPath: 'assets'}" ng-model="ga.fitness"
+                   flex></div>
+              <div ui-ace="{mode: 'javascript', onLoad: editorLoaded, workerPath: 'assets'}" ng-model="ga.selection"
+                   flex></div>
+            </div>
+          </div>
+        </md-card-content>
+      </md-card>
+
+    </div>
+    <div layout="column">
+      <md-card>
+        <md-card-header>
+          <md-card-header-text layout="row" layout-align="space-between center">
+            <span class="md-title">STARTING POPULATION</span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content layout="row" class="side-scroll">
+          <save-display ng-repeat="save in saves | orderBy:'':true" save="save" class="small"
+                        ng-click="activeSaves[$index] = !activeSaves[$index]">
+            <md-switch ng-model="activeSaves[$index]" aria-label="activate" class="md-primary"
+                       ng-click="activeSaves[$index] = !activeSaves[$index]"></md-switch>
+          </save-display>
+        </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</md-dialog-content>
+<md-dialog-actions>
+  <md-button class="md-raised md-primary" ng-click="proceed()"
+             ng-disabled="!(ga.simulations.h * ga.simulations.w * ga.population) || fitnessInvalid || selectionInvalid">
+    <md-tooltip class="multiline" md-direction="top" layout-padding=""
+                ng-if="!advanced && (ga.simulations.h * ga.simulations.w > 10 || ga.population > 20 ||
+                    ga.mutationRate > 10)">
+          <span layout ng-if="ga.mutationRate > 10">
+            A mutation rate over 10 might not produce any results.
+          </span>
+          <span layout ng-if="ga.simulations.h * ga.simulations.w > 10">
+            More than 10 simultaneous simulations are very processor intensive.
+          </span>
+          <span layout ng-if="ga.population > 20">
+            A population over 20 might take very long to converge.
+          </span>
+      <span layout>You've been warned.</span>
+    </md-tooltip>
+    <p layout-margin class="md-title">LOCK SETTINGS AND {{lenient ? 'RE' : ''}}START</p>
+  </md-button>
+</md-dialog-actions>
+</md-dialog>

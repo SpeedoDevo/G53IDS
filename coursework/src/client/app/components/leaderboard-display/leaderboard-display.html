@@ -1,0 +1,24 @@
+<md-card layout="column" layout-padding>
+  <span class="leaderboard-canvas" flex ng-if="!refresh">
+    <tz-canvas bridge-display="item.builder"></tz-canvas>
+  </span>
+  <span class="leaderboard-canvas" flex ng-if="refresh">
+    <tz-canvas bridge-display="item.builder"></tz-canvas>
+  </span>
+
+  <div layout="row">
+    <div layout="column" flex layout-align="space-between">
+      <span>GEN/ID: {{item.id}}</span>
+      <span>SCORE: {{item.score.toFixed(1)}}</span>
+      <span>COST: {{item.cost}}$</span>
+      <span>MAX LOAD: {{item.maxLoad.toFixed(2)}}%</span>
+    </div>
+    <div layout="column" layout-align="space-around center">
+      <md-button class="md-icon-button md-primary" aria-label="see ancestry" ng-click="showAncestry($event)"
+                 ng-if="item.parent !== null">
+        <md-icon md-font-icon="material-icons">timeline</md-icon>
+      </md-button>
+      <span class="md-title">#{{index}}</span>
+    </div>
+  </div>
+</md-card>

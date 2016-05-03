@@ -1,0 +1,18 @@
+{
+  "urnmapping": {
+    "shaders/font.cgfx": "font_zE6k3AovpeWStyEQP2HP3Q.cgfx.json",
+    "fonts/hero.fnt": "hero_-1NkilTqQu99zONjwb9s2Q.fnt.json",
+    "textures/hero_0.dds": "hero_0_rSC3yUvTKUvB2Qi1CUpwoQ.dds",
+    "textures/undo.png": "undo.png",
+    "textures/redo.png": "redo.png",
+    "textures/play.png": "play.png",
+    "textures/edit.png": "edit.png",
+    "textures/reset.png": "reset.png",
+    "textures/lorry.png": "lorry.png",
+    "textures/wheel.png": "wheel.png",
+    "textures/bg.png": "bg.png",
+    "textures/bga.png": "bga.png",
+    "textures/trash.png": "trash.png",
+    "textures/platforms.png": "platforms.png"
+  }
+}

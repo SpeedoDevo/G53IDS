@@ -1,0 +1,77 @@
+<md-dialog aria-label="main help" flex="50">
+  <md-toolbar class="md-accent">
+    <div class="md-toolbar-tools" layout-align="space-between center">
+      <div layout="row" layout-align="center center">
+        <h2>HELP</h2>
+      </div>
+
+      <div layout="row" layout-align="center center">
+        <md-button class="md-icon-button" ng-click="close()">
+          <md-icon md-font-set="material-icons">close</md-icon>
+        </md-button>
+      </div>
+    </div>
+  </md-toolbar>
+  <md-dialog-content layout="column" layout-padding flex>
+    <div layout="column" flex>
+      <p>
+        The aim of the game is to build the best possible bridge that can take a van to the other side of the gap.
+        To do this you can click and drag to draw a line. <strong>Lines should not intersect.</strong>
+        If you want the van to pass over that line, draw while you are holding Ctrl. You should aim to connect the
+        lines on their ends (black dots) as this makes the best connection. If you've made a mistake, you can undo it
+        using the
+        <md-icon md-font-set="material-icons" class="inline-icon">undo</md-icon>
+        button (or redo it using the
+        <md-icon md-font-set="material-icons" class="inline-icon">redo</md-icon>
+        button) or you can click on it while holding Alt to delete it. You can also clear the complete bridge and start
+        from scratch using the
+        <md-icon md-font-set="material-icons" class="inline-icon">delete_forever</md-icon>
+        button.
+      </p>
+      <p>
+        When you are happy with your creation you can press the
+        <md-icon md-font-set="material-icons" class="inline-icon">play_arrow</md-icon>
+        button to spawn a van that will try to pass though it. While the simulation is running you'll be able to see
+        how much more load the bridge can carry before breaking. When this hits 100% that means that the bridge is
+        broken
+        somewhere.
+      </p>
+      <p>
+        If you like the bridge that you created, but you want to try something new you can save your bridge by clicking
+        on the 'NEW' button next to SAVES. Then you can name it using the field on the top of the new card and if you
+        are
+        happy with the bridge you can click on the
+        <md-icon md-font-set="material-icons" class="inline-icon">check</md-icon>
+        button to save it, or the
+        <md-icon md-font-set="material-icons" class="inline-icon">close</md-icon>
+        button to discard it. If you want to use a save (or one of the samples) you can click on 'LOAD' that will put
+        the saved bridge in the editor. If you don't need a save anymore you can click the
+        <md-icon md-font-set="material-icons" class="inline-icon">delete</md-icon>
+        button to free up some space.
+      </p>
+      <p>
+        You can also adjust the simulation by using the sliders on the side. For example you could make the gravitation
+        weaker to cheat a little, or you can increase the van's weight to stress test your bridge. You can also increase
+        or decrease the elevation and distance between the two sides, to make the problem a bit more interesting.
+      </p>
+
+      <div>
+        Shortcuts:
+        <ul>
+          <li>Ctrl-Z: undo</li>
+          <li>Ctrl-Y: redo</li>
+          <li>Space: start/stop the simulation</li>
+          <li>R (while simulating): reset simulation</li>
+        </ul>
+      </div>
+      <p>
+        You can also make the computer build a bridge by clicking on the 'SWITCH TO SOLVER' button.
+      </p>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button class="md-raised md-primary" ng-click="close()">
+      <p layout-margin class="md-title">OK</p>
+    </md-button>
+  </md-dialog-actions>
+</md-dialog>

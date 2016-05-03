@@ -1,0 +1,16 @@
+<md-card class="bridge-display-card" ng-class="{'md-whiteframe-z5' : active}">
+  <md-card-header ng-if="!input">
+    <md-card-header-text layout-align="center center">
+      <span class="md-title">{{save.name}}</span>
+    </md-card-header-text>
+  </md-card-header>
+  <md-input-container class="inline-input" ng-if="input">
+    <label>Save name</label>
+    <input ng-model="save.name" md-maxlength="12">
+  </md-input-container>
+  <span class="small-canvas"><tz-canvas bridge-display="save.builder"></tz-canvas></span>
+  <md-card-content layout layout-align="center center">
+    <span>{{save.cost}}$</span>
+  </md-card-content>
+  <md-card-actions ng-transclude layout="row" layout-align="space-around center"></md-card-actions>
+</md-card>

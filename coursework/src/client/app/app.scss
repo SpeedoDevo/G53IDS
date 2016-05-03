@@ -1,0 +1,64 @@
+$fa-font-path: "../bower_components/font-awesome/fonts";
+@import '../bower_components/font-awesome/scss/font-awesome';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic');
+
+/**
+ * App-wide Styles
+ */
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+md-tooltip.multiline ._md-content {
+  height: auto;
+  span {
+    height: auto;
+    line-height: normal;
+  }
+}
+
+.inline-icon {
+  height: 17px;
+  line-height: 0.7;
+}
+
+md-slider {
+  min-width: 0;
+}
+
+md-slider[md-vertical] {
+  min-height: 0;
+  ._md-slider-wrapper {
+    width: auto;
+  }
+}
+
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+
+// Component styles are injected through grunt
+// injector
+@import 'components/leaderboard-display/leaderboard-display';
+@import 'components/save-display/save-display';
+@import 'components/world-settings/world-settings';
+@import 'evolve/evolve';
+@import 'game/drivers/MainGameDriver/directive/main-game';
+@import 'main/main';
+@import '../components/footer/footer';
+@import '../components/turbulenz/canvas/tz-canvas';
+// endinjector

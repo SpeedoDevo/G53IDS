@@ -1,0 +1,42 @@
+<md-dialog aria-label="ancestry" tabindex="0">
+  <md-toolbar class="md-accent">
+    <div class="md-toolbar-tools" layout-align="space-between center">
+      <h2>ANCESTORS OF {{item.id}}</h2>
+
+      <md-button class="md-icon-button" ng-click="close()">
+        <md-icon md-font-set="material-icons">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content layout-padding layout="column">
+    <div layout="row" layout-align="center center">
+      <span class="ancestry-canvas" flex ng-if="!refresh">
+        <tz-canvas bridge-display="items[current].builder"></tz-canvas>
+      </span>
+      <span class="ancestry-canvas" flex ng-if="refresh">
+        <tz-canvas bridge-display="items[current].builder"></tz-canvas>
+      </span>
+      <md-card flex="40">
+        <md-card-content layout="column" flex layout-align="space-between">
+          <span class="md-title">DETAILS</span>
+          <span>GEN/ID: {{items[current].id}}</span>
+          <span>SCORE: {{items[current].score.toFixed(1)}}</span>
+          <span>COST: {{items[current].cost}}$</span>
+          <span>MAX LOAD: {{items[current].maxLoad.toFixed(2)}}%</span>
+          <span class="md-title"><br/>SUCCESSFUL MUTATIONS</span>
+          <span ng-repeat="(type, cnt) in aggregate[current].succ">{{type | uppercase}}: {{cnt}}</span>
+          <span class="md-title"><br/>FAILED MUTATIONS</span>
+          <span ng-repeat="(type, cnt) in aggregate[current].fail">{{type | uppercase}}: {{cnt}}</span>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div layout="row" layout-align="center center">
+      <span layout-padding>GENERATION 1</span>
+      <md-slider class="md-primary" ng-model="current" step="1" min="0" max="{{items.length-1}}"
+                 flex aria-label="ancestor" auto-focus></md-slider>
+      <span layout-padding>GENERATION {{maxGen}}</span>
+    </div>
+  </md-dialog-content>
+  <!-- keep this guy always focused -->
+  <input md-autofocus ng-keydown="key($event)" class="display-none" onblur="this.focus()"/>
+</md-dialog>

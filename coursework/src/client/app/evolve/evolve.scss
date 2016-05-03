@@ -1,0 +1,32 @@
+div[layout].half-height {
+  max-height: 250px;
+}
+
+save-display.small {
+  md-card {
+    md-card-header, md-card-content {
+      padding: 8px 0;
+    }
+    md-card-actions {
+      margin: 0;
+    }
+  }
+}
+
+.y-scroll {
+  overflow-y: scroll;
+}
+
+md-dialog.md-dialog-fullscreen {
+  min-height: 100%;
+  min-width: 100%;
+  border-radius: 0;
+}
+
+span.squeeze-buttons > .md-icon-button {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+}

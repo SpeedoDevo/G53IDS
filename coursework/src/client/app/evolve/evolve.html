@@ -1,0 +1,74 @@
+<md-toolbar class="md-primary">
+  <div class="md-toolbar-tools" layout-align="start center">
+    <md-button class="md-icon-button" aria-label="back to home" ui-sref="main">
+      <md-icon md-font-icon="material-icons">home</md-icon>
+    </md-button>
+    <h2>EVOLUTION</h2>
+    <span flex></span>
+    <md-button class="md-icon-button">
+      <md-icon md-font-icon="material-icons">info_outline</md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+<br/>
+<div layout="row" flex="90" flex-offset="5">
+  <md-grid-list evolution-manager class="game-container"
+                md-cols="{{cols}}" md-row-height="fit" md-gutter="0px"
+                flex="65">
+    <md-grid-tile ng-repeat="sim in ::simulations track by $index">
+      <tz-canvas evolution-display></tz-canvas>
+    </md-grid-tile>
+  </md-grid-list>
+  <div layout="column" class="control-container" flex="30" flex-offset="5">
+    <md-card flex="">
+      <md-card-header>
+        <md-card-header-text layout="row" layout-align="space-between center">
+          <span class="md-title">SIMULATION SETTINGS</span>
+          <span layout="row" class="squeeze-buttons">
+            <md-button class="md-icon-button md-primary" aria-label="restart with new settings" ng-click="reload()">
+              <md-icon md-font-icon="material-icons">refresh</md-icon>
+            </md-button>
+            <md-button class="md-icon-button md-primary" aria-label="pause/play" ng-click="simulate = !simulate">
+              <md-icon md-font-icon="material-icons" ng-if="simulate">pause</md-icon>
+              <md-icon md-font-icon="material-icons" ng-if="!simulate">play_arrow</md-icon>
+            </md-button>
+          </span>
+        </md-card-header-text>
+      </md-card-header>
+      <md-card-content layout="column" layout-align="space-around" flex>
+        <div layout="column">
+          <span class="md-body-1">SIMULATION SPEED: {{speed}}</span>
+          <md-slider class="md-primary" flex ng-model="speed" step="0.1" min="1" max="5" aria-label="simulation speed">
+        </div>
+        <div layout="row" layout-align="start center">
+          <span class="md-body-1">RENDERING: </span>
+          <span flex="5"></span>
+          <md-switch ng-model="render" aria-label="render" class="md-primary"></md-switch>
+        </div>
+        <div layout="column">
+          <span class="md-body-1">GENERATION: {{em.generation === -1 ? 'LOADING...' : em.generation+1}}</span>
+        </div>
+        <div layout="column" ng-if="em.top.length > 0">
+          <span class="md-body-1">BEST INDIVIDUAL:</span>
+
+          <div layout="row" layout-align="center center">
+            <leaderboard-display class="md-whiteframe-z0" item="em.top.sorted()[0]"
+                                 index="1"></leaderboard-display>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+<div layout="column" flex="90" flex-offset="5" ng-if="em.top.length > 1">
+  <span class="md-title"><br/>LEADERBOARD</span>
+
+  <div flex>
+    <md-grid-list md-cols="3" md-row-height="225px" md-gutter="0px" flex>
+      <md-grid-tile ng-repeat="leader in em.top.sorted().slice(1,em.top.length)">
+        <leaderboard-display item="leader" index="$index+2"></leaderboard-display>
+      </md-grid-tile>
+    </md-grid-list>
+    </md-card>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<md-toolbar class="md-primary">
+  <div class="md-toolbar-tools" layout-align="start center">
+    <h2>BRIDGING GAPS WITH EVOLUTION: A CHROME EXPERIMENT</h2>
+    <span flex></span>
+    <md-button class="md-icon-button" ng-click="main.showHelp($event)">
+      <md-icon md-font-icon="material-icons">info_outline</md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+<br/>
+<div flex="90" flex-offset="5" layout="row" class="game-container">
+  <div class="canvas-container" flex="65">
+    <tz-canvas main-game></tz-canvas>
+  </div>
+  <div layout="column" class="control-container" flex="30" flex-offset="5">
+    <world-settings></world-settings>
+    <md-button ng-click="" class="md-raised md-primary" ui-sref="evolve">
+      <span layout="row" layout-align="center center">
+        <h3>SWITCH TO SOLVER</h3>
+        <md-icon md-font-icon="material-icons" class="no-margin">keyboard_arrow_right</md-icon>
+      </span>
+    </md-button>
+  </div>
+</div>
+<div flex="90" flex-offset="5">
+  <div layout="row" layout-align="left center">
+    <h1 class="md-display-1">SAVES</h1>
+    <span><md-button class="md-raised md-primary" ng-click="main.startSave()"> NEW</md-button></span>
+  </div>
+
+  <div layout="row" class="side-scroll">
+    <save-display ng-if="main.pending" save="main.pending" input active="true">
+      <md-button class="md-icon-button" aria-label="Accept"
+                 ng-click="main.save()" ng-disabled="!main.pending.name">
+        <md-icon md-font-icon="material-icons">done</md-icon>
+      </md-button>
+      <md-button class="md-icon-button md-warn" aria-label="Cancel" ng-click="main.cancel()">
+        <md-icon md-font-icon="material-icons">close</md-icon>
+      </md-button>
+    </save-display>
+    <save-display ng-repeat="save in main.saves | orderBy:'':true" save="save">
+      <md-button ng-click="main.load(save.id)">LOAD</md-button>
+      <md-button class="md-icon-button md-warn" aria-label="Delete" ng-click="main.remove(save.id)">
+        <md-icon md-font-icon="material-icons">delete</md-icon>
+      </md-button>
+    </save-display>
+  </div>
+</div>
